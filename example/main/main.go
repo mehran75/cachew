@@ -1,8 +1,8 @@
 package main
 
 import (
-	"cachew/pkg/memorycache"
 	"fmt"
+	"github.com/mehran75/cachew/memorycache"
 	"strconv"
 	"sync"
 	"time"
