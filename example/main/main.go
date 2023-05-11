@@ -21,14 +21,14 @@ func main() {
 	cachew := memorycache.NewCache[string, int]()
 
 	for k, v := range data {
-		go cachew.Set(k, v, 10*time.Second)
+		go cachew.Write(k, v, 10*time.Second)
 	}
 
 	time.Sleep(1 * time.Second)
 
 	for k, v := range data {
 		go func(k string, v int) {
-			d, err := cachew.Get(k)
+			d, err := cachew.Read(k)
 			if err != nil {
 				panic(err)
 			}

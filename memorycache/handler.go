@@ -11,7 +11,7 @@ func NewCache[Key comparable, Value any]() *Cache[Key, Value] {
 	}
 }
 
-func (c *Cache[Key, Value]) Set(key Key, value Value, expiresAfter time.Duration) {
+func (c *Cache[Key, Value]) Write(key Key, value Value, expiresAfter time.Duration) {
 	c.lock.Lock()
 	defer c.lock.Unlock()
 
@@ -21,7 +21,7 @@ func (c *Cache[Key, Value]) Set(key Key, value Value, expiresAfter time.Duration
 	}
 }
 
-func (c *Cache[Key, Value]) Get(key Key) (*Value, error) {
+func (c *Cache[Key, Value]) Read(key Key) (*Value, error) {
 	c.lock.RLock()
 	defer c.lock.RUnlock()
 
