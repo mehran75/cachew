@@ -37,6 +37,15 @@ func (c *Cache[Key, Value]) Read(key Key) (*Value, error) {
 	return &data.data, nil
 }
 
+func (c *Cache[Key, Value]) Delete(keys ...Key) {
+	c.lock.Lock()
+	defer c.lock.Unlock()
+
+	for i := range keys {
+		delete(c.data, keys[i])
+	}
+}
+
 func (c *Cache[Key, Value]) Clear() {
 	c.lock.Lock()
 	defer c.lock.Unlock()
