@@ -1,7 +1,8 @@
 # Cachew
 
-generic memory caching in golang
-
+generic memory caching in golang. 
+- Suitable for holdin small amount of data in your go application.
+- Suitable for concurrent read and write
 
 # Usage
 ```go
